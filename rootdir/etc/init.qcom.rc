@@ -627,8 +627,10 @@ service hcidump /system/bin/sh /system/etc/hcidump.sh
     disabled
     oneshot
 
-service charger /charger
+service charger /sbin/healthd -c
     class charger
+    critical
+    seclabel u:r:healthd:s0
 
 # Define fastmmi
 service fastmmi /system/bin/mmi
